@@ -1,0 +1,6 @@
+[default]
+EXTENSIONS= [
+	"inventory_control.ext.db:init_app"	
+]
+SQLALCHEMY_TRACK_MODIFICATIONS=true
+
