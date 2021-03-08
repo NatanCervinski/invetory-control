@@ -1,8 +1,10 @@
 [default]
 EXTENSIONS= [
 	"inventory_control.ext.db:init_app",	
-	"inventory_control.ext.migrations:init_app"
-	"inventory_control.ext.api:init_app"
+	"inventory_control.ext.migrations:init_app",
+	"inventory_control.ext.api:init_app",
+	"inventory_control.ext.serialization:init_app"
+
 ]
 SQLALCHEMY_TRACK_MODIFICATIONS=true
 [development]
