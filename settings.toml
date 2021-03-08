@@ -6,3 +6,6 @@ EXTENSIONS= [
 SQLALCHEMY_TRACK_MODIFICATIONS=true
 [development]
 SQLALCHEMY_DATABASE_URI = "mysql://inventory_control@localhost/inventory_control"
+[testing]
+SQLALCHEMY_DATABASE_URI = "mysql://inventory_control@localhost/inventory_control"
+
