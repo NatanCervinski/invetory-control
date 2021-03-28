@@ -12,6 +12,5 @@ class ProductRegister(Resource):
     def post(self):
         product_json = request.get_json()
         product = product_schema.load(product_json)
-        print(product)
         DatabaseCommands.insert_into_database(product)
-        return {"message": "Successful"}, 201
+        return {"message": "Success"}, 201

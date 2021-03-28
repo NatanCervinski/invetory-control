@@ -3,4 +3,4 @@ from flask import Flask
 
 
 def test_create_app_return_flask(app):
-    assert isinstance(create_app(), Flask)
+    assert isinstance(app, Flask)
