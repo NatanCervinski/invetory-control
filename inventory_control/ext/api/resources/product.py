@@ -22,5 +22,7 @@ class ProductRegister(Resource):
 class Product(Resource):
     def get(self, id):
         product_json = ProductModel.find_by_id(id)
+        if not product_json:
+            return {"message": "Product not found"}, 404
         product = product_schema.dump(product_json)
         return product, 200
