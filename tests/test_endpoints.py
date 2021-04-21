@@ -13,6 +13,13 @@ class TestProduct:
         assert r.get_json() == {"message": "Success"}
         assert r.status_code == 201
 
+    def test_register_product_409(self, client):
+        r = client.post(
+            f"{url}/product", json=self.data, headers=headers
+        )
+        assert r.get_json() == {"message": "Id already exists"}
+        assert r.status_code == 409
+
     def test_product_get_200(self, client):
         r = client.get(f"{url}/product/{self.data['id']}")
         assert r.get_json() == self.data

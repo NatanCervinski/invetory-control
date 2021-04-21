@@ -7,6 +7,7 @@ from inventory_control.ext.serialization.schemas.product import (
     ProductModel,
 )
 from inventory_control.ext.db.database_commands import DatabaseCommands
+from marshmallow.exceptions import ValidationError
 
 product_schema = ProductSchema()
 
@@ -14,8 +15,19 @@ product_schema = ProductSchema()
 class ProductRegister(Resource):
     def post(self):
         product_json = request.get_json()
-        product = product_schema.load(product_json)
-        DatabaseCommands.insert_into_database(product)
+        try:
+            product = product_schema.load(product_json)
+        except ValidationError as e:
+            return {"error": e.messages}
+        product_database = ProductModel.find_by_id(
+            product_schema.dump(product)["id"]
+        )
+        if product_database:
+            return {"message": "Id already exists"}, 409
+        try:
+            DatabaseCommands.insert_into_database(product)
+        except Exception as e:
+            return e
         return {"message": "Success"}, 201
 
 
