@@ -3,7 +3,7 @@ from flask_restful import Resource
 from inventory_control.ext.serialization.schemas.product import (
     ProductSchema,
 )
-from inventory_control.ext.serialization.schemas.product import (
+from inventory_control.ext.db.models.product import (
     ProductModel,
 )
 from inventory_control.ext.db.database_commands import DatabaseCommands
